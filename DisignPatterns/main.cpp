@@ -9,7 +9,7 @@ class Singleton
 	string last_name;
 	string first_name;
 	tm birth_date;
-	Singleton()
+    Singleton()
 	{
 		cout << "Constructor:\t" << this << endl;
 	}
@@ -19,11 +19,11 @@ public:
 	tm get_birth_date() { return birth_date; }
 	void set_last_name(const std::string& last_name)
 	{
-		this->last_name;
+		this->last_name = last_name;
 	}
 	void set_first_name(const std::string& first_name)
 	{
-		this->first_name;
+		this->first_name = first_name;
 	}
 	void set_birth_date(size_t year, size_t month, size_t day)
 	{
@@ -33,6 +33,7 @@ public:
 	}
 	~Singleton()
 	{
+		delete instance;
 		cout << "Destructor:\t" << this << endl;
 	}
 	static Singleton* getInstance()
@@ -45,9 +46,23 @@ public:
 		cout << last_name << " " << first_name << endl;
 	}
 };
+
+Singleton* Singleton::instance = nullptr;
+
 void main()
 {
 	setlocale(LC_ALL, "");
-	Singleton* director = Singleton::getInstance();
-	director->get_last_name("Василий");
+
+	/*Singleton* director = Singleton::getInstance();
+	director->set_first_name("Василий");
+	director->set_last_name("Тупенко");
+	director->set_birth_date(1990, 04, 01);
+	director->print();*/
+
+	Singleton::getInstance()->set_last_name("Дурко");
+	Singleton::getInstance()->set_first_name("Виталий");
+	Singleton::getInstance()->set_birth_date(1990,04,01);
+	Singleton::getInstance()->print();
+	Singleton::getInstance()->~Singleton();
+
 }
