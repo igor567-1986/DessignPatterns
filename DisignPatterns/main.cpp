@@ -1,11 +1,12 @@
-﻿#include<iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
 #include<string>
 #include<time.h>
 using namespace std;
 
 class Singleton
 {
-	static Singleton* instance;
+	//static Singleton* instance;
 	string last_name;
 	string first_name;
 	tm birth_date;
@@ -27,27 +28,33 @@ public:
 	}
 	void set_birth_date(size_t year, size_t month, size_t day)
 	{
-		this->birth_date.tm_year = year;
-		this->birth_date.tm_mon = month;
-		this->birth_date.tm_wday = day;
+		this->birth_date.tm_year = year -1900;
+		this->birth_date.tm_mon = month -1;
+		this->birth_date.tm_mday = day;
 	}
 	~Singleton()
 	{
-		delete instance;
 		cout << "Destructor:\t" << this << endl;
 	}
-	static Singleton* getInstance()
+	static Singleton& getInstance()
 	{
-		if (instance == nullptr)instance = new Singleton;
+		//if (instance == nullptr)instance = new Singleton;
+		static Singleton instance;
 		return instance;
 	}
 	void print()const
 	{
-		cout << last_name << " " << first_name << endl;
+		time_t timer; //хранит время в формате Timestamp(Timestamp это количество от даты 1января 1970
+		time(&timer); //Получаем текущее время
+		tm* current_time = localtime(&timer); // Сохраняем текущее время  в "человеческом" формате
+		size_t age = current_time->tm_year - birth_date.tm_year;
+		if (current_time->tm_mon < birth_date.tm_mon)age--;
+		if (current_time->tm_mon == birth_date.tm_mon && current_time->tm_mday < birth_date.tm_mday)age--;
+		cout << last_name << " " << first_name<< " " << age << " лет." << endl;
 	}
 };
 
-Singleton* Singleton::instance = nullptr;
+//Singleton* Singleton::instance = nullptr;
 
 void main()
 {
@@ -59,10 +66,10 @@ void main()
 	director->set_birth_date(1990, 04, 01);
 	director->print();*/
 
-	Singleton::getInstance()->set_last_name("Дурко");
-	Singleton::getInstance()->set_first_name("Виталий");
-	Singleton::getInstance()->set_birth_date(1990,04,01);
-	Singleton::getInstance()->print();
-	Singleton::getInstance()->~Singleton();
+	Singleton::getInstance().set_last_name("Дурко");
+	Singleton::getInstance().set_first_name("Виталий");
+	Singleton::getInstance().set_birth_date(1990,04,01);
+	Singleton::getInstance().print();
+	
 
 }

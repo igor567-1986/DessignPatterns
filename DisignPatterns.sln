@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DisignPatterns", "DisignPatterns\DisignPatterns.vcxproj", "{B0424F4A-54E3-4CDF-833B-793039891D14}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Builder", "Builder\Builder.vcxproj", "{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{B0424F4A-54E3-4CDF-833B-793039891D14}.Release|x64.Build.0 = Release|x64
 		{B0424F4A-54E3-4CDF-833B-793039891D14}.Release|x86.ActiveCfg = Release|Win32
 		{B0424F4A-54E3-4CDF-833B-793039891D14}.Release|x86.Build.0 = Release|Win32
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Debug|x64.ActiveCfg = Debug|x64
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Debug|x64.Build.0 = Debug|x64
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Debug|x86.ActiveCfg = Debug|Win32
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Debug|x86.Build.0 = Debug|Win32
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Release|x64.ActiveCfg = Release|x64
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Release|x64.Build.0 = Release|x64
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Release|x86.ActiveCfg = Release|Win32
+		{F395DB7E-D0BD-40F8-99E6-7ED58A99003E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
